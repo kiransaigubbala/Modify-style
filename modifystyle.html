@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript DOM Practice</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e3f2fd;
+            margin: 0;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1565c0;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .demo {
+            text-align: center;
+            background-color: white;
+            width: 90%;
+            margin: 0 auto 30px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px #b0bec5;
+        }
+
+        #heading {
+            color: #1565c0;
+        }
+
+        #paragraph {
+            color: #555;
+            font-size: 18px;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #90caf9;
+            box-shadow: 0 3px 8px #b0bec5;
+        }
+
+        .card h2 {
+            color: #1976d2;
+            font-size: 20px;
+            margin-top: 0;
+        }
+
+        .card p {
+            color: #555;
+        }
+
+        button {
+            background-color: #1976d2;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-top: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0d47a1;
+        }
+
+        .result {
+            background-color: #e3f2fd;
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 5px;
+            min-height: 20px;
+            color: #333;
+            word-break: break-word;
+            white-space: pre-line;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>JavaScript DOM Practice</h1>
+
+    <p class="subtitle">
+        Learn  innerText and innerHTML
+    </p>
+
+    <div class="demo">
+
+        <h1 id="heading">
+          
+            Welcome to Fullstack
+        </h1>
+
+        <p id="paragraph">
+            Welcome to paragraph
+        </p>
+
+    </div>
+
+    <div class="container">
+
+        <div class="card">
+            <h2>1. Access Heading Text</h2>
+            <p>Access the text inside the heading.</p>
+            <button onclick="accesstext()">Access Text</button>
+            <div class="result" id="result1"></div>
+        </div>
+
+        <div class="card">
+            <h2>2. Access Paragraph</h2>
+            <p>Access the text inside the paragraph.</p>
+            <button onclick="accesspara()">Access Paragraph</button>
+            <div class="result" id="result2"></div>
+        </div>
+
+        <div class="card">
+            <h2>3. Change Paragraph</h2>
+            <p>Change the paragraph using innerText.</p>
+            <button onclick="changetext()">Change Paragraph</button>
+            <div class="result" id="result3"></div>
+        </div>
+
+        <div class="card">
+            <h2>4. Access Data</h2>
+            <p>Compare innerText and innerHTML.</p>
+            <button onclick="accesscontent()">Access Data</button>
+            <div class="result" id="result4"></div>
+        </div>
+
+        <div class="card">
+            <h2>5. Change InnerText</h2>
+            <p>innerText treats HTML tags as text.</p>
+            <button onclick="changeinnertext()">Change InnerText</button>
+            <div class="result" id="result5"></div>
+        </div>
+
+        <div class="card">
+            <h2>6. Change InnerHTML</h2>
+            <p>innerHTML understands HTML tags.</p>
+            <button onclick="changeinnerhtml()">Change InnerHTML</button>
+            <div class="result" id="result6"></div>
+        </div>
+
+        <div class="card">
+            <h2>7. Change Background</h2>
+            <p>Change the background color of the page.</p>
+            <button onclick="changeBgc()">Change Background</button>
+            <div class="result" id="result7"></div>
+        </div>
+
+        <div class="card">
+            <h2>8. Change H1 Color</h2>
+            <p>Change the color of the heading.</p>
+            <button onclick="changecolor()">Change Color</button>
+            <div class="result" id="result8"></div>
+        </div>
+
+    </div>
+
+    <script>
+
+        function accesstext() {
+
+            var elem = document.getElementById("heading");
+
+            var mytext = elem.innerText;
+
+            document.getElementById("result1").innerText = mytext;
+        }
+
+
+        function accesspara() {
+
+            var para = document.getElementById("paragraph").innerText;
+
+            document.getElementById("result2").innerText = para;
+        }
+
+
+        function changetext() {
+
+            document.getElementById("paragraph").innerText =
+                "Welcome to JavaScript World";
+
+            document.getElementById("result3").innerText =
+                "Paragraph text changed successfully";
+        }
+
+
+        function accesscontent() {
+
+            var textData =
+                document.getElementById("heading").innerText;
+
+            var textHTML =
+                document.getElementById("heading").innerHTML;
+
+            document.getElementById("result4").innerText =
+                "innerText = " + textData +
+                "\n\ninnerHTML = " + textHTML;
+        }
+
+
+        function changeinnertext() {
+
+            document.getElementById("heading").innerText =
+                "<span>Welcome to JS World</span>";
+
+            document.getElementById("result5").innerText =
+                "innerText displays the HTML tag as text";
+        }
+
+
+        function changeinnerhtml() {
+
+            document.getElementById("heading").innerHTML =
+                "<span>Welcome to JS World</span>";
+
+            document.getElementById("result6").innerText =
+                "innerHTML changes the HTML content";
+        }
+
+
+        function changeBgc() {
+
+            document.body.style.backgroundColor = "#fff3e0";
+
+            document.getElementById("result7").innerText =
+                "Background color changed";
+        }
+
+
+        function changecolor() {
+
+            document.getElementById("heading").style.color = "#e65100";
+
+            document.getElementById("result8").innerText =
+                "Heading color changed";
+        }
+
+    </script>
+
+</body>
+</html>
